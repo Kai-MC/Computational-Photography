@@ -17,14 +17,14 @@ This repo is for the coursework of Computer Vision and Computational Photography
 ## [Project 2: Fun with Filters and Frequencies](https://inst.eecs.berkeley.edu/~cs180/fa23/upload/files/proj2/kai.ma/submission/CS%20180%20Project%202%20fe92eb35c05d4421abbab90b21f2987e.html)
 
 
-- **1.1 Finite Difference Operator:** The image's partial derivatives in the x and y directions are computed using convolution. The gradient magnitude, which represents intensity change, is then calculated. A threshold of 0.18 produces a binary image highlighting the edges.
+- **Finite Difference Operator:** Utilizes convolution to compute the image's partial derivatives, highlighting significant intensity changes in the image.
   
-- **1.2 Derivative of Gaussian (DoG) Filter:** The image is first blurred using a 2D Gaussian filter. After blurring, edges are detected with a threshold of 0.08. The Derivative of Gaussians (DoG) method is then applied.
+- **Derivative of Gaussian (DoG) Filter:** Involves blurring the image with a Gaussian filter and subsequently detecting edges. The DoG method further refines this process, enhancing edge detection.
 
-- **2.1 Image "Sharpening":** An image is loaded and its pixel values are normalized. Details are extracted by subtracting a blurred version from the original. By adding back twice the amount of these details to the original, a sharpened effect is achieved. This results in enhanced details, more noise, and increased contrast.
+- **Image "Sharpening":** A technique that enhances the details of an image by emphasizing the differences between the original and its blurred version.
   
-- **2.2 Hybrid Images:** Images are converted to grayscale. A function creates hybrid images by applying a low-pass filter to one image and subtracting a low-pass filtered version from another image to get its high-pass version. The frequency components of an image are visualized using Fast Fourier Transform.
+- **Hybrid Images:** A method that combines two images, where one provides the low-frequency components and the other provides the high-frequency components, resulting in an image that has characteristics of both.
   
-- **2.3 Gaussian and Laplacian Stacks:** Laplacian stacks are constructed from each image using their corresponding Gaussian stacks. The sigma of the gaussian is selected as 4.
+- **Gaussian and Laplacian Stacks:** Techniques that decompose an image into different frequency components, allowing for detailed analysis and manipulation at various scales.
   
-- **2.4 Multiresolution Blending:** This involves blending images using Laplacian Stacks.
+- **Multiresolution Blending:** A method that blends images using their Laplacian stacks, ensuring a smooth transition and integration of details from both images.
