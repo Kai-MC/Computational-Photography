@@ -2,7 +2,8 @@
 
 This repo is for the coursework of Computer Vision and Computational Photography at UC Berkeley.
 
-## Project 1: Images of the Russian Empire: Colorizing the Prokudin-Gorskii Photo Collection
+## [Project 1: Images of the Russian Empire: Colorizing the Prokudin-Gorskii Photo Collection](https://inst.eecs.berkeley.edu/~cs180/fa23/upload/files/proj1/kai.ma/CS%20180%20Project%201%2092b9fadaefee4f3aa91afcb31b633aa9.html)
+
 
 1. **Single-Scale Method:** This method involves comparing two images by measuring the Sum of Squared Differences (SSD) for each possible shift for the central 80% windows. The goal is to find the shift that results in the minimum SSD, indicating the best alignment of the two images.
    
@@ -13,7 +14,8 @@ This repo is for the coursework of Computer Vision and Computational Photography
 
 ---
 
-## Project 2: Fun with Filters and Frequencies
+## [Project 2: Fun with Filters and Frequencies](https://inst.eecs.berkeley.edu/~cs180/fa23/upload/files/proj2/kai.ma/submission/CS%20180%20Project%202%20fe92eb35c05d4421abbab90b21f2987e.html)
+
 
 - **1.1 Finite Difference Operator:** The image's partial derivatives in the x and y directions are computed using convolution. The gradient magnitude, which represents intensity change, is then calculated. A threshold of 0.18 produces a binary image highlighting the edges.
   
