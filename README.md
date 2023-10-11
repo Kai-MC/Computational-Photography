@@ -3,9 +3,7 @@
 This repo is for the coursework of Computer Vision and Computational Photography at UC Berkeley.
 
 ## Project 1: Images of the Russian Empire: Colorizing the Prokudin-Gorskii Photo Collection
-by Kai Ma
 
-### Methodology:
 1. **Single-Scale Method:** This method involves comparing two images by measuring the Sum of Squared Differences (SSD) for each possible shift for the central 80% windows. The goal is to find the shift that results in the minimum SSD, indicating the best alignment of the two images.
    
 2. **Multi-Scale Method:** This method uses an image pyramid to enhance the efficiency and accuracy of alignment. Instead of searching for the best shift at the original resolution, the images are downscaled, and the best shift is identified at this lower resolution. This rough alignment at a coarser scale guides the search at higher resolutions. Once the best shift at the lower resolution is identified, the method scales up the shift and refines the search at the original scale.
