@@ -1,0 +1,717 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>CS 180 Project 1</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-interactiveBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="92b9fada-efee-4f3a-a91a-fcb31b633aa9" class="page sans"><header><h1 class="page-title">CS 180 Project 1</h1><p class="page-description"></p></header><div class="page-body"><h1 id="8df4c43b-15a6-437c-8d37-fac384c71f02" class=""><strong>Images of the Russian Empire: Colorizing the </strong><strong><a href="https://www.loc.gov/collections/prokudin-gorskii/">Prokudin-Gorskii</a></strong><strong> photo collection</strong></h1><h2 id="7c2aba56-8ead-487c-8f62-4ab3af20ed86" class="">by <strong>Kai Ma</strong></h2><p id="5e11c41d-a856-493b-9359-1e532f259b2b" class="">
+</p><h1 id="7cafeb57-1b01-433c-a7ff-53a607f58150" class="">Method</h1><h3 id="e3eaa01d-b561-4c4d-bfbd-53500cc993e4" class="">Single-Scale Method</h3><p id="c524d7c8-e9ad-45bf-9ebc-e403b4b11407" class="">This method compares two images by measuring the Sum of Squared Differences (SSD) for each possible shift for the central 80% windows. The aim is to find the shift that produces the minimum SSD, indicating the best alignment of the two images.</p><h3 id="efd2b1e5-bfd2-49a2-8894-d89b2ac39936" class="">Multi-Scale Method</h3><p id="1b80fc79-d3a1-4f8e-b742-bf5f72dc9946" class="">This method employs an image pyramid to improve the efficiency and accuracy of alignment. Instead of searching for the best shift at the original resolution, the images are downscaled, and the best shift is sought at this lower resolution. This rough alignment at a coarser scale guides the search at higher resolutions. Once the best shift at the lower resolution is found, the method scales up the shift and refines the search at the original scale.</p><p id="bacb3dd0-95d6-4cc4-9270-9436bf22aa3d" class="">
+</p><h1 id="f2417bc1-e527-415d-9556-fd4a4bf546c4" class="">Outcome</h1><div id="2d323a64-c55b-457e-82e1-b5e8580ba38a" class="column-list"><div id="bba33bfb-dc6f-468f-b04a-b2f1e095016b" style="width:50%" class="column"><h1 id="b1f6d3eb-69e3-4f4a-955c-7e5850bca885" class=""><strong>Raw</strong></h1></div><div id="962cafc7-bf09-46b3-833d-73134b96bb00" style="width:50%" class="column"><h1 id="b1680e08-82ed-48eb-942f-c34a442203b4" class=""><strong>Aligned</strong></h1></div></div><h3 id="70250f6f-d5d5-4c49-8214-6beae1f63635" class="">Cathedral</h3><div id="5c5a6d20-a821-4017-920b-13e2c965f67f" class="column-list"><div id="600747e8-de33-451b-ace8-e91519638cfd" style="width:50%" class="column"><figure id="c5a5c093-ea09-455a-a9b3-6b6d364b99cf" class="image"><a href="CS%20180%20Project%201%2092b9fadaefee4f3aa91afcb31b633aa9/cathedral.jpg"><img style="width:390px" src="CS%20180%20Project%201%2092b9fadaefee4f3aa91afcb31b633aa9/cathedral.jpg"/></a></figure></div><div id="be1daf14-8e22-41bf-8a78-bcfa9e96e46c" style="width:50%" class="column"><figure id="1dd4524a-b6c5-46ef-8165-df2c9a7936db" class="image"><a href="CS%20180%20Project%201%2092b9fadaefee4f3aa91afcb31b633aa9/cathedral%201.jpg"><img style="width:390px" src="CS%20180%20Project%201%2092b9fadaefee4f3aa91afcb31b633aa9/cathedral%201.jpg"/></a></figure><p id="5c3d91f3-e7ed-40ed-8fd4-270bf8a4156d" class="">
+</p></div></div><h3 id="70279fa4-c24b-4822-9af9-4de0cebab4e8" class="">Church</h3><div id="f3521b3d-58c0-4c50-9bcf-0ddb7a51e570" class="column-list"><div id="4fd7674d-d286-48b9-bd48-fedfb1272797" style="width:50%" class="column"><figure id="a2a33c38-422c-42c2-8884-0e8a18c30756" class="image"><a href="CS%20180%20Project%201%2092b9fadaefee4f3aa91afcb31b633aa9/church.jpg"><img style="width:3634px" src="CS%20180%20Project%201%2092b9fadaefee4f3aa91afcb31b633aa9/church.jpg"/></a></figure><p id="5d33e04a-6541-4d69-91f7-58f29e72496c" class="">
+</p><p id="68318c93-ed3a-450d-98dd-c102d62877b0" class="">
+</p></div><div id="660f231e-3da5-4273-abd7-a0ef3c6d10d1" style="width:50%" class="column"><figure id="5a153d9e-deea-479e-8bbb-141d2736345d" class="image"><a href="CS%20180%20Project%201%2092b9fadaefee4f3aa91afcb31b633aa9/church%201.jpg"><img style="width:3634px" src="CS%20180%20Project%201%2092b9fadaefee4f3aa91afcb31b633aa9/church%201.jpg"/></a></figure><p id="9d84cde2-9f0f-467c-92f1-cc8ca2812ace" class="">
+</p></div></div><h3 id="f38256e6-739d-4997-9ce8-7bd7edcb822b" class="">Emir</h3><div id="a5daf585-3768-46fa-aa99-6a5a15b14a03" class="column-list"><div id="e32c528e-2d38-4371-8b01-70e20c142029" style="width:50%" class="column"><figure id="86f70488-1601-4fed-85f3-9b374521387b" class="image"><a href="CS%20180%20Project%201%2092b9fadaefee4f3aa91afcb31b633aa9/emir.jpg"><img style="width:3702px" src="CS%20180%20Project%201%2092b9fadaefee4f3aa91afcb31b633aa9/emir.jpg"/></a></figure></div><div id="2b4580a0-6550-4fb3-9d9c-d4db56926e2c" style="width:50%" class="column"><figure id="9660acb8-0b1d-4199-b585-5102ca450b84" class="image"><a href="CS%20180%20Project%201%2092b9fadaefee4f3aa91afcb31b633aa9/emir%201.jpg"><img style="width:3702px" src="CS%20180%20Project%201%2092b9fadaefee4f3aa91afcb31b633aa9/emir%201.jpg"/></a></figure><p id="fba1a8ba-ce3d-498e-a69b-d2d11e0b1749" class="">
+</p></div></div><h3 id="c60ca569-f1ee-4460-9e7d-673415707bc3" class="">Harvesters</h3><div id="f545d0ea-7c6d-4f23-bdef-0beae188efe4" class="column-list"><div id="e8ff8cdb-3854-4b42-920f-6fae1f38ac70" style="width:50%" class="column"><figure id="9b6e4ce8-cdee-46c7-a5e6-dd32fd410961" class="image"><a href="CS%20180%20Project%201%2092b9fadaefee4f3aa91afcb31b633aa9/harvesters.jpg"><img style="width:3683px" src="CS%20180%20Project%201%2092b9fadaefee4f3aa91afcb31b633aa9/harvesters.jpg"/></a></figure><p id="3e9de7d0-d941-4dd0-8ae1-93854b943c04" class="">
+</p></div><div id="e0f4ad17-3aab-4032-8d9f-ed82af6dc164" style="width:50%" class="column"><figure id="0f777b64-422b-42c0-babd-db1f6356e20d" class="image"><a href="CS%20180%20Project%201%2092b9fadaefee4f3aa91afcb31b633aa9/harvesters%201.jpg"><img style="width:3683px" src="CS%20180%20Project%201%2092b9fadaefee4f3aa91afcb31b633aa9/harvesters%201.jpg"/></a></figure><p id="82a8683a-2cdd-4845-9212-ef7bb9ffe138" class="">
+</p></div></div><h3 id="74d3c974-599a-4610-9b61-a0de00f2f4a6" class="">Icon</h3><div id="b593105b-3b38-453a-8f69-4a73b4c21b53" class="column-list"><div id="b4654172-208a-4ba2-8629-d8953ee42b9a" style="width:50%" class="column"><figure id="89b740d0-5d01-4c7f-9d36-cd7158626d82" class="image"><a href="CS%20180%20Project%201%2092b9fadaefee4f3aa91afcb31b633aa9/icon.jpg"><img style="width:3741px" src="CS%20180%20Project%201%2092b9fadaefee4f3aa91afcb31b633aa9/icon.jpg"/></a></figure></div><div id="904d03ad-4036-47a2-bda7-da6169bea0f1" style="width:50%" class="column"><figure id="de41306c-3711-4620-9aac-f1c6d76e0a76" class="image"><a href="CS%20180%20Project%201%2092b9fadaefee4f3aa91afcb31b633aa9/icon%201.jpg"><img style="width:3741px" src="CS%20180%20Project%201%2092b9fadaefee4f3aa91afcb31b633aa9/icon%201.jpg"/></a></figure><p id="898d353b-c96a-4afa-a596-839d94aebaca" class="">
+</p></div></div><p id="431979f8-a97d-47df-abaf-d08f6a7fd219" class="">
+</p><h3 id="9d66e0f6-cd62-4dd4-a6a3-727b63c8252c" class="">Lady</h3><div id="c4f640a2-7415-425f-afae-b6377ad34f7c" class="column-list"><div id="584326d2-550f-450c-ae1f-05b865f9816b" style="width:50%" class="column"><figure id="38eb4908-ada9-4866-adff-8ed94ec3eefd" class="image"><a href="CS%20180%20Project%201%2092b9fadaefee4f3aa91afcb31b633aa9/lady.jpg"><img style="width:3761px" src="CS%20180%20Project%201%2092b9fadaefee4f3aa91afcb31b633aa9/lady.jpg"/></a></figure></div><div id="2af7ccc9-1b0b-486f-a975-4d036ee32f98" style="width:50%" class="column"><figure id="162bd40c-7754-407e-9e19-1ea21d2ad7fc" class="image"><a href="CS%20180%20Project%201%2092b9fadaefee4f3aa91afcb31b633aa9/lady%201.jpg"><img style="width:3761px" src="CS%20180%20Project%201%2092b9fadaefee4f3aa91afcb31b633aa9/lady%201.jpg"/></a></figure><p id="83c78059-3e5c-4d70-a0d0-3eddb9ba8fc4" class="">
+</p></div></div><p id="eef0741a-b6d9-46ce-97c2-04d11db73dd8" class="">
+</p><h3 id="a633dcf6-dbbf-4ef2-a1d7-f2e9e2707667" class="">Melons</h3><div id="4f04b034-c78c-48d9-aeed-130f8a2b205e" class="column-list"><div id="54fabd60-7b06-435b-a7bc-019ce1dc18b4" style="width:50%" class="column"><figure id="250ef46c-0757-48a7-a30f-4f69fa3e038c" class="image"><a href="CS%20180%20Project%201%2092b9fadaefee4f3aa91afcb31b633aa9/melons.jpg"><img style="width:3770px" src="CS%20180%20Project%201%2092b9fadaefee4f3aa91afcb31b633aa9/melons.jpg"/></a></figure><p id="39a9a0e7-c412-4dce-8a8f-24d405738712" class="">
+</p></div><div id="896350bf-f13e-4a8d-9181-3d570500adb8" style="width:50%" class="column"><figure id="c4f7aaa0-0f53-4b1d-b6ab-e8bf8c0c3786" class="image"><a href="CS%20180%20Project%201%2092b9fadaefee4f3aa91afcb31b633aa9/melons%201.jpg"><img style="width:3770px" src="CS%20180%20Project%201%2092b9fadaefee4f3aa91afcb31b633aa9/melons%201.jpg"/></a></figure><p id="63c8dc81-81c2-4b59-9f7e-af15a1c1dab0" class="">
+</p></div></div><h3 id="ffb3e323-90d5-4e45-8d73-f0c33992c9c4" class="">Monastery</h3><div id="0f510d5a-3a5e-4d2c-8456-be298a8d08ca" class="column-list"><div id="3997354c-1ace-40ab-a0d2-4441399b58b5" style="width:50%" class="column"><figure id="9d2fdc3c-8bd3-46b6-a8c8-b255671d0f6b" class="image"><a href="CS%20180%20Project%201%2092b9fadaefee4f3aa91afcb31b633aa9/monastery.jpg"><img style="width:391px" src="CS%20180%20Project%201%2092b9fadaefee4f3aa91afcb31b633aa9/monastery.jpg"/></a></figure></div><div id="832a7a6d-5677-4f0b-9a03-901855c67272" style="width:50%" class="column"><figure id="3430a203-b25e-441b-889f-e56b90a481ed" class="image"><a href="CS%20180%20Project%201%2092b9fadaefee4f3aa91afcb31b633aa9/monastery%201.jpg"><img style="width:391px" src="CS%20180%20Project%201%2092b9fadaefee4f3aa91afcb31b633aa9/monastery%201.jpg"/></a></figure><p id="6c424b61-88ed-4ee2-a997-d6e739cfe378" class="">
+</p></div></div><h3 id="e1acf955-96d3-4e90-9a40-1ea8fde6c022" class="">Onion_church</h3><div id="516d7460-a505-49c9-b655-cd87a34e9754" class="column-list"><div id="1e9c6868-6e76-498e-bf0b-a59fe67d6a8f" style="width:50%" class="column"><figure id="2c2525ca-301e-4791-acf5-a93ea5601330" class="image"><a href="CS%20180%20Project%201%2092b9fadaefee4f3aa91afcb31b633aa9/onion_church.jpg"><img style="width:3781px" src="CS%20180%20Project%201%2092b9fadaefee4f3aa91afcb31b633aa9/onion_church.jpg"/></a></figure></div><div id="6b9aecf6-5c50-4067-ad7d-497fad431ecc" style="width:50%" class="column"><figure id="36d38e5e-0f30-40c0-ac33-787d33525fae" class="image"><a href="CS%20180%20Project%201%2092b9fadaefee4f3aa91afcb31b633aa9/onion_church%201.jpg"><img style="width:3781px" src="CS%20180%20Project%201%2092b9fadaefee4f3aa91afcb31b633aa9/onion_church%201.jpg"/></a></figure></div></div><h3 id="62e78d5c-6485-4574-a73b-1a5d6b48c4ee" class="">Sculpture</h3><div id="645b88d3-030c-4668-a7f4-998b511a2d63" class="column-list"><div id="f0442139-5b5e-4396-8a4b-d7e696cf1676" style="width:50%" class="column"><figure id="73cf0c45-bc7e-4631-a9dc-ccf81bccc58f" class="image"><a href="CS%20180%20Project%201%2092b9fadaefee4f3aa91afcb31b633aa9/sculpture.jpg"><img style="width:3800px" src="CS%20180%20Project%201%2092b9fadaefee4f3aa91afcb31b633aa9/sculpture.jpg"/></a></figure></div><div id="5be6117c-af20-4f36-b77d-152726924955" style="width:50%" class="column"><figure id="d3d2223c-3081-4d1a-84ab-84634c2df7ff" class="image"><a href="CS%20180%20Project%201%2092b9fadaefee4f3aa91afcb31b633aa9/sculpture%201.jpg"><img style="width:3800px" src="CS%20180%20Project%201%2092b9fadaefee4f3aa91afcb31b633aa9/sculpture%201.jpg"/></a></figure></div></div><h3 id="066a49b0-dfb8-40c5-8c22-6591dea393dd" class="">Self portrait</h3><div id="af8bd736-2a76-4505-910d-cbbb1ea211ae" class="column-list"><div id="b7fc3bf9-6d59-4312-a414-05853a2b52c9" style="width:50%" class="column"><figure id="9b5028ce-f367-4d94-bb95-362a4b30ed51" class="image"><a href="CS%20180%20Project%201%2092b9fadaefee4f3aa91afcb31b633aa9/self_portrait.jpg"><img style="width:3810px" src="CS%20180%20Project%201%2092b9fadaefee4f3aa91afcb31b633aa9/self_portrait.jpg"/></a></figure></div><div id="f3e78350-7959-4ad9-91d5-20dbb4de864a" style="width:50%" class="column"><figure id="8ce268c6-f23d-49fe-a4a0-4fc5059161e1" class="image"><a href="CS%20180%20Project%201%2092b9fadaefee4f3aa91afcb31b633aa9/self_portrait%201.jpg"><img style="width:3810px" src="CS%20180%20Project%201%2092b9fadaefee4f3aa91afcb31b633aa9/self_portrait%201.jpg"/></a></figure><p id="421f4550-91f9-482e-a404-f86af8624923" class="">
+</p></div></div><h3 id="b6c3ca35-f32c-4e17-ad9e-0855c1a90657" class="">Three generation</h3><div id="e5bdf02a-6e27-4722-a1a6-bb8054530b1a" class="column-list"><div id="0ddfab60-57b7-4e1d-84ce-2bd5e89e8b96" style="width:50%" class="column"><figure id="d2e923da-0d37-423c-8123-0a3c68dc7c79" class="image"><a href="CS%20180%20Project%201%2092b9fadaefee4f3aa91afcb31b633aa9/three_generations.jpg"><img style="width:3714px" src="CS%20180%20Project%201%2092b9fadaefee4f3aa91afcb31b633aa9/three_generations.jpg"/></a></figure></div><div id="d9116320-16b9-457c-a36c-8c240e70ed8a" style="width:50%" class="column"><figure id="e2c52b16-37a3-4bfe-bcad-9ab82fc4db7e" class="image"><a href="CS%20180%20Project%201%2092b9fadaefee4f3aa91afcb31b633aa9/three_generations%201.jpg"><img style="width:3714px" src="CS%20180%20Project%201%2092b9fadaefee4f3aa91afcb31b633aa9/three_generations%201.jpg"/></a></figure><p id="1f4fc040-ea2d-44d1-899f-b81ebacf345e" class="">
+</p></div></div><h3 id="93c86241-a502-46e0-ad3d-f4fc2bb9a6e8" class="">Tobolsk</h3><div id="4f02c673-f504-493c-b4ed-172ac6f9042f" class="column-list"><div id="011970aa-d19d-488a-ac5d-f8c96f5907b0" style="width:50%" class="column"><figure id="6c5b232f-8971-4880-9579-62041f37e46f" class="image"><a href="CS%20180%20Project%201%2092b9fadaefee4f3aa91afcb31b633aa9/tobolsk.jpg"><img style="width:396px" src="CS%20180%20Project%201%2092b9fadaefee4f3aa91afcb31b633aa9/tobolsk.jpg"/></a></figure></div><div id="e3c2f0ab-d6df-470e-bb7e-8e3cc0a51d7c" style="width:50%" class="column"><figure id="cdb47e1c-5c43-4909-b006-c3b09292071e" class="image"><a href="CS%20180%20Project%201%2092b9fadaefee4f3aa91afcb31b633aa9/tobolsk%201.jpg"><img style="width:396px" src="CS%20180%20Project%201%2092b9fadaefee4f3aa91afcb31b633aa9/tobolsk%201.jpg"/></a></figure><p id="ef0a9ad4-f599-4db8-ab18-13c6ad77c96e" class="">
+</p></div></div><h3 id="4924f00f-ae36-414d-a494-7d5d213cdf0b" class="">Train</h3><div id="dc5a313b-ce83-4f06-8c90-63e33d5b13d1" class="column-list"><div id="404bcc96-f447-47ab-a1b3-c5d71af14cad" style="width:50%" class="column"><figure id="b5d21d7f-47ba-408e-a389-b93f0e5c39c2" class="image"><a href="CS%20180%20Project%201%2092b9fadaefee4f3aa91afcb31b633aa9/train.jpg"><img style="width:3741px" src="CS%20180%20Project%201%2092b9fadaefee4f3aa91afcb31b633aa9/train.jpg"/></a></figure><p id="cfc1f901-205d-4a6f-ad61-afdd457acdd0" class="">
+</p></div><div id="c9ab3692-42c2-4463-9e4a-9fdbd407e53c" style="width:50%" class="column"><figure id="36782874-a717-40f8-936b-ac52f5bc174f" class="image"><a href="CS%20180%20Project%201%2092b9fadaefee4f3aa91afcb31b633aa9/train%201.jpg"><img style="width:3741px" src="CS%20180%20Project%201%2092b9fadaefee4f3aa91afcb31b633aa9/train%201.jpg"/></a></figure><p id="1c8ff350-88a6-49c0-a0e2-6bd714bffe6e" class="">
+</p></div></div><p id="d6d15c73-c386-48b7-b84a-500a7048a88f" class="">
+</p><h1 id="677102f7-33e1-4784-a47d-6d855b360fc1" class="">Extra Images</h1><h2 id="8fd1a727-0429-4178-bad8-390bce438f8d" class="">Family</h2><figure id="a9f46b0b-2024-4d16-b78c-448298cca04c" class="image"><a href="CS%20180%20Project%201%2092b9fadaefee4f3aa91afcb31b633aa9/family.jpg"><img style="width:432px" src="CS%20180%20Project%201%2092b9fadaefee4f3aa91afcb31b633aa9/family.jpg"/></a></figure><p id="43068494-1786-4f32-8a12-605f5859c9d0" class="">
+</p><h2 id="a38607d6-d4bc-4771-86de-d0167a7f15e7" class="">Bridge</h2><figure id="2714c28b-8f59-4e3f-9c24-5798bbc53e8a" class="image"><a href="CS%20180%20Project%201%2092b9fadaefee4f3aa91afcb31b633aa9/bridge.jpg"><img style="width:432px" src="CS%20180%20Project%201%2092b9fadaefee4f3aa91afcb31b633aa9/bridge.jpg"/></a></figure><p id="2aa90bac-b8f5-40d8-ad93-e0f47539e5ef" class="">
+</p><h2 id="32131ccd-ecfd-40e7-ba7b-480e20172076" class="">Offset</h2><p id="330e0146-1455-47f7-a068-cd9250f0bd38" class="">
+</p><p id="262bc71d-1e83-4fcf-9e3f-b58bba31cc1a" class="">The offsets are determined at a depth of 5. The initial adjustment is the shift on the red plate, followed by an adjustment on the green plate.</p><p id="73214079-1dcf-4f43-95f6-762f9eb0932b" class="">
+</p><p id="b6064e49-6465-416b-94b8-82932556a3c9" class="">TIF files</p><p id="ee98f0b5-1bdd-473c-82c4-72bd2d6229f6" class="">[{&#x27;data/emir.tif&#x27;: (array([61, 43]), array([49, 24]))},
+{&#x27;data/church.tif&#x27;: (array([58, -4]), array([25,  4]))},
+{&#x27;data/three_generations.tif&#x27;: (array([111,  12]), array([52, 14]))},
+{&#x27;data/melons.tif&#x27;: (array([178,  14]), array([81, 10]))},
+{&#x27;data/onion_church.tif&#x27;: (array([108,  37]), array([51, 27]))},
+{&#x27;data/train.tif&#x27;: (array([87, 32]), array([43,  6]))},
+{&#x27;data/icon.tif&#x27;: (array([89, 23]), array([40, 17]))},
+{&#x27;data/self_portrait.tif&#x27;: (array([176,  37]), array([78, 29]))},
+{&#x27;data/harvesters.tif&#x27;: (array([123,  14]), array([59, 17]))},
+{&#x27;data/sculpture.tif&#x27;: (array([140, -27]), array([ 33, -11]))},
+{&#x27;data/lady.tif&#x27;: (array([114,  12]), array([55,  8]))}]</p><p id="420575db-0afa-4f2e-a755-04915a824e6c" class="">
+</p><p id="944fd375-a459-48be-a98a-361e96ec6e09" class="">JPG files</p><p id="01d3d6b1-7c30-4217-8931-d74c34501681" class="">[{&#x27;data/monastery.jpg&#x27;: (array([3, 2]), array([-3,  2]))},
+{&#x27;data/tobolsk.jpg&#x27;: (array([6, 3]), array([3, 3]))},
+{&#x27;data/cathedral.jpg&#x27;: (array([12,  3]), array([5, 2]))}]</p><p id="9deb9e5f-404a-4c85-b3c9-2f1cdccaf254" class="">
+</p><p id="46b3c2c9-a973-4788-a1a8-b61d7e543b32" class="">Extra Images</p><p id="be2616b7-7dcc-481a-a001-c646118a6076" class="">[{&#x27;data/bridge/bridge.tif&#x27;: (array([68,  4]), array([13, -7]))}]</p><p id="119f74c7-50d2-4b60-bf45-d8c8ed2b1b79" class="">[{&#x27;data/family/family.tif&#x27;: (array([139,  -8]), array([66, -1]))}]</p><p id="07ed75f9-4969-4cac-937d-3c6e46777886" class="">
+</p></div></article></body></html>
